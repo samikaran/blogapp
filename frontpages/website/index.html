@@ -1,0 +1,46 @@
+{% extends 'base.html' %} 
+{% block title %}Blog App{% endblock title %} 
+{% block activeHome %}active{% endblock activeHome %}
+{% block style %}
+<style></style>
+{% endblock style %}
+{% block body %}
+
+<section class="bannerSection">
+  <div class="container py-4">
+    <div class="col-md-12">
+      <div class="h-100 p-5 bg-light border rounded-3">
+        <h2>Welcome to my Blog App!</h2>
+        <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
+        <button class="btn btn-outline-secondary" type="button">Example button</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if allPost %}
+<section class="blogSection">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for post in allPost %}
+    <div class="col">
+      <div class="card">
+        <a href="/blogs/post/{{post.slug}}/"><img src="/{{post.image}}" class="card-img-top" alt="{{post.alt_text}}"></a>
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{post.content|safe | truncatechars:100}}</p>
+          <a href="/blogs/post/{{post.slug}}/" class="btn btn-outline-success">View details</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="text-center mt-4">
+    <a href="/blogs" class="btn btn-success">View all blogs</a>
+  </div>
+</section>
+{% endif %}
+
+{% endblock body %}
+{% block script %}
+<script></script>
+{% endblock script %}

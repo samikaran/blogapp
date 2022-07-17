@@ -1,0 +1,53 @@
+{% extends 'base.html' %} 
+{% block title %}Contact - Blog App{% endblock title %} 
+{% block activeContact %}active{% endblock activeContact %}
+{% block style %}
+<style></style>
+{% endblock style %}
+{% block body %}
+
+<section>
+  <div class="container py-4">
+    <nav aria-label="breadcrumb mt-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <!-- <li class="breadcrumb-item"><a href="#">Library</a></li> -->
+        <li class="breadcrumb-item active" aria-current="page">Contact</li>
+      </ol>
+    </nav>
+    <div class="col-md-12">
+      <div class="h-100 p-5 bg-light border rounded-3">
+        <h2>Contact Us</h2>
+      </div>
+    </div>
+    <div class="col-md-8 p-4 mt-2 border text-center m-auto">
+      <form action="/contact" method="POST" class="row g-3">
+        {% csrf_token %}
+        <div class="row my-4">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Name*" aria-label="Name" name="name" id="name" required>
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Phone*" aria-label="Phone" name="phone" id="phone" required>
+          </div>
+        </div>
+        <div class="row my-4">
+          <div class="col">
+            <input type="email" class="form-control" placeholder="Email*" aria-label="Email" id="email" name="email" required>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <textarea class="form-control" name="message" id="message" cols="30" rows="5" placeholder="Message*" required></textarea>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock body %}
+{% block script %}
+<script></script>
+{% endblock script %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %} 
+{% block title %}Search Result - Blog App{% endblock title %} 
+{% block activeHome %}active{% endblock activeHome %}
+{% block style %}
+<style></style>
+{% endblock style %}
+{% block body %}
+
+<section>
+  <div class="container py-4">
+    <nav aria-label="breadcrumb mt-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <!-- <li class="breadcrumb-item"><a href="#">Library</a></li> -->
+        <li class="breadcrumb-item active" aria-current="page">Search</li>
+      </ol>
+    </nav>
+    <div class="col-md-12">
+      <div class="h-100 p-5 bg-light border rounded-3">
+        <h2>Search Results</h2>
+        {% if allPosts|length < 1 %}
+          <p>Search results for keyword: "{{keyword}}"</p>
+        {% else %}
+          <p>No search results for keyword: "{{keyword}}", Please try again with different keywords.</p>
+        {% endif %}
+      </div>
+    </div>
+    
+    <section class="blogSection">
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for post in allPosts %}
+        <div class="col">
+          <div class="card">
+            <a href="/blogs/post/{{post.slug}}/"><img src="/{{post.image}}" class="card-img-top" alt="{{post.alt_text}}"></a>
+            <div class="card-body">
+              <h5 class="card-title">{{post.title}}</h5>
+              <p class="card-text">{{post.content|safe | truncatechars:100}}</p>
+              <a href="/blogs/post/{{post.slug}}/" class="btn btn-outline-success">View details</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    
+  </div>
+</section>
+
+{% endblock body %}
+{% block script %}
+<script></script>
+{% endblock script %}

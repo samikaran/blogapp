@@ -1,0 +1,67 @@
+{% extends 'base.html' %} 
+{% block title %}Upload Blog - Blog App{% endblock title %} 
+{% block activeBlog %}active{% endblock activeBlog %}
+{% block style %}
+<style></style>
+{% endblock style %}
+{% block body %}
+
+<section>
+  <div class="container py-4">
+    <nav aria-label="breadcrumb mt-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/blogs">Blogs</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Upload blog</li>
+      </ol>
+    </nav>
+    <div class="col-md-12">
+      <div class="h-100 p-5 bg-light border rounded-3">
+        <h2>Upload blog</h2>
+      </div>
+    </div>
+    <div class="col-md-8 p-4 mt-2 border text-center m-auto">
+      <form action="/blogs/upload/" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row my-4">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Title*" aria-label="Title" id="title" name="title" >
+          </div>
+        </div>
+        <div class="row my-4">
+          <div class="col" style="display: flex;">
+            <select class="form-select" aria-label="Default select category" name="category">
+              <option selected>Select category*</option>
+              {% if allCategories %}
+                {% for category in allCategories %}
+                <option value="{{category.id}}">{{category}}</option>
+                {% endfor %}
+              {% endif %}
+            </select>
+            <!-- <button>Add new</button> -->
+            <a href=""></a>
+          </div>
+        </div>
+        <div class="row my-4">
+          <div class="mb-3">
+            <label for="formFile" class="form-label">Upload image</label>
+            <input class="form-control" type="file" name="featured_image" id="featured_image" accept="image/*">
+          </div>
+          
+        </div>
+        <div class="row my-4">
+          <div class="col-md-12">
+            <textarea class="form-control" name="content" id="" cols="50" rows="10" placeholder="Contents*"></textarea>
+          </div>
+        </div>
+        <button class="btn btn-success">Submit</button>
+      </form>
+    </div>
+    
+  </div>
+</section>
+
+{% endblock body %}
+{% block script %}
+<script></script>
+{% endblock script %}

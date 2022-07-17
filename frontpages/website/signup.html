@@ -1,0 +1,57 @@
+{% extends 'base.html' %} 
+{% block title %}Signup - Blog App{% endblock title %} 
+{% block style %}
+<style></style>
+{% endblock style %}
+{% block body %}
+
+<section>
+  <div class="container py-4">
+    <div class="col-md-12">
+      <div class="h-50 p-5 bg-light border rounded-3">
+        <h2>Sign Up</h2>
+      </div>
+    </div>
+    <div class="col-md-8 p-4 mt-2 border text-center m-auto">
+      <form action="/signup" method="POST">
+        {% csrf_token %}
+        <div class="row my-4">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="First Name*" aria-label="First Name" id="first_name" name="first_name" required>
+          </div>
+        </div>
+        <div class="row my-4">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Last Name*" aria-label="Last Name" id="last_name" name="last_name" required>
+          </div>
+        </div>
+        <div class="row my-4">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Username*" aria-label="Username" id="username" name="username" required>
+          </div>
+        </div>
+        <div class="row my-4">
+          <div class="col">
+            <input type="email" class="form-control" placeholder="Email*" aria-label="Email" id="email" name="email" required>
+          </div>
+        </div>
+        <div class="row my-4">
+          <div class="col">
+            <input type="password" class="form-control" placeholder="Password*" aria-label="Password" id="password1" name="password1" required>
+          </div>
+        </div>
+        <div class="row my-4">
+          <div class="col">
+            <input type="password" class="form-control" placeholder="Confirm Password*" aria-label="Password" id="password2" name="password2" required>
+          </div>
+        </div>
+        <button class="btn btn-success">Signup</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock body %}
+{% block script %}
+<script></script>
+{% endblock script %}

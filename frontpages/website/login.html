@@ -1,0 +1,37 @@
+{% extends 'base.html' %} 
+{% block title %}Contact - Blog App{% endblock title %} 
+{% block style %}
+<style></style>
+{% endblock style %}
+{% block body %}
+
+<section>
+  <div class="container py-4">
+    <div class="col-md-12">
+      <div class="h-100 p-5 bg-light border rounded-3">
+        <h2>Login</h2>
+      </div>
+    </div>
+    <div class="col-md-8 p-4 mt-2 border text-center m-auto">
+      <form action="/login" method="POST">
+        {% csrf_token %}
+        <div class="row my-4">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Username*" aria-label="Username" id="username" name="username" required>
+          </div>
+        </div>
+        <div class="row my-4">
+          <div class="col">
+            <input type="password" class="form-control" placeholder="Password*" aria-label="Password" id="password" name="password" required>
+          </div>
+        </div>
+        <button class="btn btn-success">Login</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock body %}
+{% block script %}
+<script></script>
+{% endblock script %}

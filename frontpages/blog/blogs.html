@@ -1,0 +1,52 @@
+{% extends 'base.html' %} 
+{% block title %}All Blogs - Blog App{% endblock title %} 
+{% block activeBlog %}active{% endblock activeBlog %}
+{% block style %}
+<style></style>
+{% endblock style %}
+{% block body %}
+
+<section>
+  <div class="container py-4">
+    <nav aria-label="breadcrumb mt-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <!-- <li class="breadcrumb-item"><a href="#">Library</a></li> -->
+        <li class="breadcrumb-item active" aria-current="page">Blogs</li>
+      </ol>
+    </nav>
+    <div class="col-md-12">
+      <div class="h-100 p-5 bg-light border rounded-3">
+        <h2>All Blogs</h2>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="blogSection">
+  {% if allPosts %}
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for post in allPosts %}
+    <div class="col">
+      <div class="card">
+        <a href="/blogs/post/{{post.slug}}"><img src="/{{post.image}}" class="card-img-top" alt="{{post.alt_text}}"></a>
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{post.content|safe| truncatechars:100}}</p>
+          <a href="/blogs/post/{{post.slug}}" class="btn btn-outline-success">View details</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="text-center mt-4">
+    <button type="button" class="btn btn-success">Load more</button>
+  </div>
+  {% else %}
+  <div class="text-center mt-4">No posts found!</div>
+  {% endif %}
+</section>
+
+{% endblock body %}
+{% block script %}
+<script></script>
+{% endblock script %}
